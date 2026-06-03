@@ -3,7 +3,7 @@ import * as path from "path";
 import { faker } from "@faker-js/faker";
 
 test("Travilo", async ({ page }) => {
-  await page.goto("https://uat-travilo.ibos.io/login");
+  await page.goto("https://uat-partner.travilo.io");
 
   await page.getByRole("textbox", { name: "Enter your email" }).click();
   await page

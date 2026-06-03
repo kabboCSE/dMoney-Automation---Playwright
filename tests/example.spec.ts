@@ -13,6 +13,7 @@ test("example", async({page})=>{
     // type : 2
     const headerText = await page.getByText('Admin Dashboard').textContent();
     expect(headerText).toContain("Admin Dashboard")
+    await page.pause();
 
     //type : 3
     // await expect(page.getByText("Admin Dashboard")).toContainText("Admin Dashboard")

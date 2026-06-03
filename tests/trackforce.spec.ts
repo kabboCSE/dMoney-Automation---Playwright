@@ -7,12 +7,13 @@ test("Trackforce", async ({ page }) => {
   await page.getByRole("textbox", { name: "Email" }).fill("kabbo@ibos.io");
 
   await page.getByRole("textbox", { name: "Password" }).click();
-  await page.getByRole("textbox", { name: "Password" }).fill("00Developer999@");
+  await page.getByRole("textbox", { name: "Password" }).fill("Admin1234#");
   await page.getByRole("button", { name: "Log In" }).click();
-  await page.getByRole("complementary").getByText("Monitoring").click();
+await page.getByRole("complementary").getByText("Monitoring", { exact: true }).click();
   await page.getByRole("link", { name: "Console Commands" }).click();
   await page.getByRole("textbox", { name: "Search" }).click();
   await page.getByRole("textbox", { name: "Search" }).fill("SQA");
+  await page.getByRole("button", { name: "Clear search" }).click();
   await page.getByRole("link", { name: "Emailing" }).click();
   await page.getByRole("link", { name: "File Transfers" }).click();
   await page.getByRole("link", { name: "Online Meetings" }).click();
