@@ -1,7 +1,16 @@
 
-import { test, expect } from '@playwright/test';
+import { test, expect, Page } from '@playwright/test';
+let page:Page;
 
-test("example", async ({ page }) => {
+test.beforeAll(async({browser})=>{
+    page = await browser.newPage();
+})
+
+test.afterAll(async()=>{
+    await page.close();
+})
+
+test("example", async () => {
 
     await page.goto("https://dmoneyportal.roadtocareer.net/login");
 
@@ -13,7 +22,14 @@ test("example", async ({ page }) => {
     // type : 2
     const headerText = await page.getByText('Admin Dashboard').textContent();
     expect(headerText).toContain("Admin Dashboard");
-    await page.getByRole('link', { name: 'User List' }).click();
+   
+    //type : 3
+    // await expect(page.getByText("Admin Dashboard")).toContainText("Admin Dashboard")
+
+})
+
+test("Search by user", async () =>{
+     await page.getByRole('link', { name: 'User List' }).click();
 
     // await page.getByText('Search by ID').click();
 
@@ -28,8 +44,6 @@ test("example", async ({ page }) => {
     await page.pause();
     await page.pause();
 
-    //type : 3
-    // await expect(page.getByText("Admin Dashboard")).toContainText("Admin Dashboard")
 
-})
+} )
 
