@@ -41,9 +41,29 @@ test("Search by user", async () =>{
     await page.waitForTimeout(2000);
     await page.getByRole('button', { name: 'View' }).click();
     await expect(page).toHaveURL(/.*\/users\/104356$/);
-    await page.pause();
-    await page.pause();
+    // await page.pause();
+
 
 
 } )
 
+test("Create New user", async()=>{
+      await page.getByRole('link', { name: 'Create User' }).click();
+  await page.getByRole('textbox', { name: 'Name' }).click();
+  await page.getByRole('textbox', { name: 'Name' }).fill('Sahil Test');
+  await page.getByRole('textbox', { name: 'Email' }).click();
+  await page.getByRole('textbox', { name: 'Email' }).fill('sahil@mail.com');
+  await page.getByRole('textbox', { name: 'Password' }).click();
+  await page.getByRole('textbox', { name: 'Password' }).fill('123456');
+  await page.getByRole('textbox', { name: 'Phone Number' }).click();
+  await page.getByRole('textbox', { name: 'Phone Number' }).fill('01627963258');
+  await page.getByRole('textbox', { name: 'NID' }).click();
+  await page.getByRole('textbox', { name: 'NID' }).fill('454353535435');
+//   await page.getByLabel('', { exact: true }).click();
+await page.getByRole('combobox', { exact: true }).click();
+await page.locator('.MuiOutlinedInput-notchedOutline').nth(0).press('ArrowDown')
+await page.locator('.MuiOutlinedInput-notchedOutline').nth(0).press('ArrowDown')
+await page.locator('.MuiOutlinedInput-notchedOutline').nth(0).press('Enter')
+//   await page.getByRole('option', { name: 'Customer' }).click();
+  await page.getByRole('button', { name: 'Create User' }).click();
+})
