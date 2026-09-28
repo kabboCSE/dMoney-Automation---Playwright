@@ -1,5 +1,6 @@
 
 import { test, expect, Page } from '@playwright/test';
+import { LoginPage } from '../page/login';
 let page:Page;
 
 test.beforeAll(async({browser})=>{
@@ -10,13 +11,16 @@ test.afterAll(async()=>{
     await page.close();
 })
 
-test("example", async () => {
+test.only("example", async () => {
 
     await page.goto("https://dmoneyportal.roadtocareer.net/login");
+    const login = new LoginPage(page);
+    await login.userLogin("admin@dmoney.com","1234");
+    await page.pause();
 
-    await page.getByRole("textbox", { name: "Email or Phone Number" }).fill("admin@dmoney.com")
-    await page.getByRole("textbox", { name: "Password" }).fill("1234");
-    await page.getByRole("button", { name: "LOGIN" }).click();
+    // await page.getByRole("textbox", { name: "Email or Phone Number" }).fill("admin@dmoney.com")
+    // await page.getByRole("textbox", { name: "Password" }).fill("1234");
+    // await page.getByRole("button", { name: "LOGIN" }).click();
     // await expect(page.getByRole('banner')).toContainText('Admin Dashboard');
 
     // type : 2
