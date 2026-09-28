@@ -58,7 +58,7 @@ test("Create New user", async()=>{
   await page.getByRole('textbox', { name: 'Phone Number' }).click();
   await page.getByRole('textbox', { name: 'Phone Number' }).fill('01627963258');
   await page.getByRole('textbox', { name: 'NID' }).click();
-  await page.getByRole('textbox', { name: 'NID' }).fill('454353535435');
+  await page.getByRole('textbox', { name: 'NID' }).fill('454353535465');
 //   await page.getByLabel('', { exact: true }).click();
 await page.getByRole('combobox', { exact: true }).click();
 await page.locator('.MuiOutlinedInput-notchedOutline').nth(0).press('ArrowDown')
