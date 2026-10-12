@@ -17,7 +17,7 @@ export class User {
   await this.page.getByRole("textbox", { name: "Name" }).fill(userModel.name);
   await this.page.getByRole("textbox", { name: "Email" }).fill(userModel.email);
   await this.page.getByRole("textbox", { name: "Password" }).fill(userModel.password);
-  await this.page.getByRole("textbox", { name: "Phone Number" }).fill(userModel.Phoneno);
+  await this.page.getByRole("textbox", { name: "Phone Number" }).fill(userModel.phoneno);
   await this.page.getByRole("textbox", { name: "NID" }).fill(String(userModel.nid));
   //   await page.getByLabel('', { exact: true }).click();
   await this.page.getByRole("combobox", { exact: true }).click();

@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Mack Senger",
+    "email": "shahriarkabbo7124@gmail.com",
+    "password": "954949",
+    "Phoneno": "01655497759",
+    "nid": 123456789,
+    "role": "Customer"
+  },
+  {
+    "name": "Flora Zemlak",
+    "email": "shahriarkabbo5510@gmail.com",
+    "password": "954949",
+    "phoneno": "01625851250",
+    "nid": 123456789,
+    "role": "Customer"
+  },
+  {
+    "name": "Mr. Jodie Schroeder",
+    "email": "shahriarkabbo2594@gmail.com",
+    "password": "954949",
+    "phoneno": "01639060168",
+    "nid": 123456789,
+    "role": "Customer"
+  },
+  {
+    "name": "Jerad Jakubowski",
+    "email": "shahriarkabbo2601@gmail.com",
+    "password": "954949",
+    "phoneno": "01637038290",
+    "nid": 123456789,
+    "role": "Merchant"
+  },
+  {
+    "name": "Kirk Rath",
+    "email": "shahriarkabbo4839@gmail.com",
+    "password": "954949",
+    "phoneno": "01653852817",
+    "nid": 123456789,
+    "role": "Agent"
+  }
+]

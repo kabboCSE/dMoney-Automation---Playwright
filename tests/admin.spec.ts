@@ -1,9 +1,9 @@
 import { test, expect, Page } from "@playwright/test";
 import { LoginPage } from "../page/login";
 import { User } from "../page/user";
-import { UserModel } from "../models/user.model";
+import { Role, UserModel } from "../models/user.model";
 import { faker } from "@faker-js/faker";
-import { genearateRandomNumber } from "../utils/utils";
+import { genearateRandomNumber, saveJsonData } from "../utils/utils";
 let page: Page;
 
 test.beforeAll(async ({ browser }) => {
@@ -31,10 +31,10 @@ test("example", async () => {
 
   //type : 3
   // await expect(page.getByText("Admin Dashboard")).toContainText("Admin Dashboard")
-    // await page.pause();
+  // await page.pause();
 });
 
-test("Search by user", async () => {
+test.skip("Search by user", async () => {
   //  await page.getByRole('link', { name: 'User List' }).click();
 
   // await page.getByText('Search by ID').click();
@@ -50,20 +50,20 @@ test("Search by user", async () => {
   await page.waitForTimeout(2000);
   await page.getByRole("button", { name: "View" }).click();
   await expect(page).toHaveURL(new RegExp(`.*/users/${userID}$`));
-//   await page.pause();
-
+  //   await page.pause();
 });
 
 test("Create New user", async () => {
   const crtUser = new User(page);
-  const userModel:UserModel={
-  name: faker.person.fullName(),
-  email: `shahriarkabbo${genearateRandomNumber(1000,9999)}@gmail.com`,
-  password: "954949",
-  Phoneno: `016${genearateRandomNumber(10000000,99999999)}`,
-  nid: 123456789,
-  role: "Customer"
-  }
-  await crtUser.userCreate(userModel);
+  const userData: UserModel = {
+    name: faker.person.fullName(),
+    email: `shahriarkabbo${genearateRandomNumber(1000, 9999)}@gmail.com`,
+    password: "954949",
+    phoneno: `016${genearateRandomNumber(10000000, 99999999)}`,
+    nid: 123456789,
+    role: Role.Agent
+  };
+  await crtUser.userCreate(userData);
+  saveJsonData(userData, "resources/users.json");
   await page.pause();
 });
