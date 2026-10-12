@@ -1,4 +1,5 @@
 import fs from 'fs'
+import { UserModel } from '../models/user.model';
 export function genearateRandomNumber(min: number, max: number): number {
   const randomNumber = Math.random() * (max - min) + min;
   return Math.floor(randomNumber);
@@ -14,4 +15,10 @@ export function saveJsonData(jsonObject:object, fileUrl:string){
   dataArray.push(jsonObject)
   fs.writeFileSync(fileUrl, JSON.stringify(dataArray,null,2)) //null,2 is just for formatting
 
+}
+
+export function lastuserData(fileUrl:string):UserModel{
+  const dataContent = fs.readFileSync(fileUrl,"utf-8");
+  let dataArray =  JSON.parse(dataContent)
+  return dataArray[dataArray.length - 1]
 }
