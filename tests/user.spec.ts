@@ -2,7 +2,7 @@ import { test, expect, Page } from "@playwright/test";
 import { LoginPage } from "../page/login";
 import { lastuserData } from "../utils/utils";
 
-test("Last login user",async({page})=>{
+test("Last login user", {tag:"@smoke"},async({page})=>{
       await page.goto("https://dmoneyportal.roadtocareer.net/login");
       const login = new LoginPage(page);
       const userData =  lastuserData("./resources/users.json");

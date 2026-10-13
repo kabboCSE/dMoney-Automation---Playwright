@@ -5,7 +5,7 @@ export function genearateRandomNumber(min: number, max: number): number {
   return Math.floor(randomNumber);
 }
 
-export function saveJsonData(jsonObject:object, fileUrl:string){
+export function saveJsonData(jsonObject:object, fileUrl:string): void{
   let dataArray:object[] = []
   if(fs.existsSync(fileUrl)){
     const fileContent =  fs.readFileSync(fileUrl,"utf-8"); //readJSON  //existsSync = if file is not exists then it will create, if exists, then it will read existing file to proceed next work

@@ -13,8 +13,8 @@ test.beforeAll(async ({ browser }) => {
 test.afterAll(async () => {
   await page.close();
 });
-
-test("example", async () => {
+test.describe.serial(async()=>{
+  test("user login",{tag: "@smoke"} ,async () => {
   await page.goto("https://dmoneyportal.roadtocareer.net/login");
   const login = new LoginPage(page);
   await login.userLogin("admin@dmoney.com", "1234");
@@ -34,7 +34,7 @@ test("example", async () => {
   // await page.pause();
 });
 
-test.skip("Search by user", async () => {
+test("Search by user", async () => {
   //  await page.getByRole('link', { name: 'User List' }).click();
 
   // await page.getByText('Search by ID').click();
@@ -44,16 +44,17 @@ test.skip("Search by user", async () => {
   // await page.getByRole('textbox', { name: 'Enter User ID' }).click();
   // await page.getByRole('textbox', { name: 'Enter User ID' }).fill('104356');
   // await page.getByRole('button', { name: 'Search' }).click();
-  const userID = "104356";
+  // const userID = "104355";
+  const userID = "786355";
   const search = new User(page);
   await search.userSearch(userID);
   await page.waitForTimeout(2000);
   await page.getByRole("button", { name: "View" }).click();
   await expect(page).toHaveURL(new RegExp(`.*/users/${userID}$`));
-  //   await page.pause();
+    
 });
 
-test("Create New user", async () => {
+test("Create New user",{tag: "@smoke"}, async () => {
   const crtUser = new User(page);
   const userData: UserModel = {
     name: faker.person.fullName(),
@@ -65,5 +66,9 @@ test("Create New user", async () => {
   };
   await crtUser.userCreate(userData);
   saveJsonData(userData, "resources/users.json");
-  await page.pause();
+  
 });
+
+
+})
+
